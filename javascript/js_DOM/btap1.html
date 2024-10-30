@@ -1,0 +1,24 @@
+<!-- Bài 1. Thay đổi nội dung của một phần tử 
+ Tạo 1 trang HTML có một đoạn văn vaf 1 nút bấm. Khi nhấn vào nút,
+ nội dung đoạn văn sẽ thay đổi-->
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      function changeContent() {
+        document.getElementById("text").innerHTML =
+          "Nội dung đã được thay đổi!";
+      }
+    </script>
+  </head>
+  <body>
+    <p id="text">
+      Hôm nay là một ngày gió mát, có lẽ vì đang có cơn bão mang tên Trà Mi ở
+      ngoài biển đông ảnh hưởng tới Hà Nội.Muốn có câu thơ tặng thả thính chàng
+      : Trời xanh, mây trắng, nắng vàng bao giờ chàng mới đổ tình với ta
+    </p>
+    <button onclick="changeContent()">Nhấn để thay đổi nội dung</button>
+  </body>
+</html>

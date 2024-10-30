@@ -1,0 +1,20 @@
+<!-- Bài tập 4: Thay đổi màu nền của trang
+ Tạo 1 trang html có 3 nút, mỗi nút khi nhấn sẽ thay đổi màu nền của trang thành 1 màu khác 
+ (ví dụ đỏ, xanh , vàng,cam,...) -->
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thay đổi màu nền</title>
+    <script>
+      function changeBackgroundColor() {
+        const colors = ["red", "green", "blue", "yellow"];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        document.body.style.backgroundColor = randomColor;
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="changeBackgroundColor()">Thay đổi màu nền</button>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Đăng Ký Tài Khoản</title>
+    <link rel="stylesheet" href="css_form1.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <form action="#" method="post">
+        <h2>Form Đăng Ký Tài Khoản</h2>
+
+        <label for="name">Họ tên:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" required />
+
+        <label for="confirm_password">Xác nhận mật khẩu:</label>
+        <input
+          type="password"
+          id="confirm_password"
+          name="confirm_password"
+          required
+        />
+
+        <label>Giới tính:</label>
+        <div class="gender">
+          <input type="radio" id="male" name="gender" value="Nam" required />
+          <label for="male">Nam </label>
+          <input type="radio" id="female" name="gender" value="Nữ" required />
+          <label for="female"> Nữ</label>
+        </div>
+
+        <label for="nationality">Quốc tịch:</label>
+        <select id="nationality" name="nationality" required>
+          <option value="">Chọn quốc tịch</option>
+          <option value="Viet Nam">Việt Nam</option>
+          <option value="USA">USA</option>
+          <option value="Japan">Japan</option>
+          <option value="Korea">Korea</option>
+          <option value="England">England</option>
+        </select>
+
+        <div class="terms">
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms"
+            >Tôi đồng ý với các <a href="#">điều khoản sử dụng</a></label
+          >
+        </div>
+
+        <button type="submit">Đăng ký</button>
+      </form>
+    </div>
+  </body>
+</html>

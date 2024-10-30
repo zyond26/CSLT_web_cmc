@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      background-color: darkblue;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+    .main-area {
+      border: 5px double black;
+      width: 800px;
+      height: 500px;
+      margin: 100px auto;
+      padding: 10px;
+      background-color: white;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    label {
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
+    }
+    .form-group {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    .button {
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #3e8e41;
+    }
+    .delete {
+      background-color: #fff 44336;
+    }
+    .delete:hover {
+      background-color: #da190b;
+    }
+  </style>
+  <body>
+    <div class="main-area">
+      <h2>Student Management</h2>
+      <form id="StudentForm">
+        <div class="form-group">
+          <label for="StudentName"> Student Name: </label>
+          <input type="text" id="StudentName" name="StudentName" />
+        </div>
+        <div class="form-group">
+          <label for="StudentDOB"> Student DOB: </label>
+          <input type="date" id="StudentDOB" name="StudentDOB" />
+        </div>
+        <div class="form-group">
+          <label for="StudentGender"> Student Gender: </label>
+          <select name="StudentGender" id="StudentGender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <button class="button">Add Student</button>
+      </form>
+      <table id="StudentTable">
+        <tr>
+          <th>Student Name</th>
+          <th>Student DOB</th>
+          <th>Student Gender</th>
+          <th>Action</th>
+        </tr>
+      </table>
+    </div>
+    <script>
+      const studentForm = document.getElementById("StudentForm");
+      const studentTable = document.getElementById("StudentTable");
+      let studentData = [];
+
+      studentForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const studentName = document.getElementById("StudentName").value;
+        const studentDOB = document.getElementById("StudentDOB").value;
+        const studentGender = document.getElementById("StudentGender").value;
+
+        const student = {
+          name: studentName,
+          dob: studentDOB,
+          gender: studentGender,
+        };
+
+        studentData.push(student);
+
+        const tableRow = document.createElement("tr");
+        tableRow.innerHTML = `
+          <td>${studentName}</td>
+          <td>${studentDOB}</td>
+          <td>${studentGender}</td>
+          <td>
+            <button class="button delete">Delete</button>
+          </td>
+        `;
+
+        studentTable.appendChild(tableRow);
+
+        studentForm.reset();
+      });
+
+      studentTable.addEventListener("click", (e) => {
+        if (e.target.classList.contains("delete")) {
+          const rowIndex = e.target.parentNode.parentNode.rowIndex;
+          studentTable.deleteRow(rowIndex);
+          studentData.splice(rowIndex - 1, 1);
+        }
+      });
+    </script>
+  </body>
+</html>

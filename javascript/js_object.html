@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Object Manipulation</title>
+  </head>
+  <body>
+    <script>
+      // Step 1: Create an object named 'student'
+      let student = {
+        name: "John Doe",
+        age: 21,
+        major: "Computer Science",
+      };
+
+      // Step 2: Access and print 'name' and 'major' in the console
+      console.log(`Name: ${student.name}`);
+      console.log(`Major: ${student.major}`);
+
+      // Step 3: Add 'gpa' property to 'student'
+      student.gpa = 3.8;
+
+      // Step 4: Change 'age' property to 22
+      student.age = 22;
+
+      // Step 5: Print the whole 'student' object after modification
+      console.log("Student object after modification:", student);
+
+      // Step 6: Add method 'introduce' to 'student'
+      student.introduce = function () {
+        return `My name is ${this.name}, I am ${this.age} years old and I study ${this.major}`;
+      };
+
+      // Step 7: Call 'introduce' method and log result
+      console.log(student.introduce());
+
+      // Step 8: Remove 'major' property from 'student'
+      delete student.major;
+      console.log("Student object after removing 'major':", student);
+
+      // Step 9: Create 'university' object
+      let university = {
+        name: "CMC University",
+        location: "Hanoi, Vietnam",
+        students: [student],
+      };
+
+      // Step 10: Access and print 'university' name and list all students
+      console.log(`University: ${university.name}`);
+      console.log("List of students:", university.students);
+
+      // Step 11: Use Object.assign to copy 'student' object
+      let copiedStudent = Object.assign({}, student);
+      console.log("Copied student object:", copiedStudent);
+
+      // Step 12: Modify a property in the copied object without affecting the original
+      copiedStudent.name = "Jane Smith";
+      console.log("Modified copied student:", copiedStudent);
+      console.log("Original student after modification:", student);
+    </script>
+  </body>
+</html>

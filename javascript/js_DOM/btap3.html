@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thêm vào danh sách</title>
+    <script>
+      function addItem() {
+        const newItem = document.getElementById("newItem").value;
+        const list = document.getElementById("itemList");
+        const li = document.createElement("li");
+        li.textContent = newItem;
+        list.appendChild(li);
+      }
+    </script>
+  </head>
+  <body>
+    <ul id="itemList">
+      <li>Phần tử 1</li>
+      <li>Phần tử 2</li>
+    </ul>
+    <input type="text" id="newItem" placeholder="Nhập phần tử mới" />
+    <button onclick="addItem()">Thêm</button>
+  </body>
+</html>

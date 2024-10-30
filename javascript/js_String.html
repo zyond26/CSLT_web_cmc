@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Function 1: Shorten Text
+      function shortenText(text, maxLength) {
+        if (text.length > maxLength) {
+          return text.slice(0, maxLength) + "...";
+        }
+        return text;
+      }
+
+      // Function 2: Count Words and Sentences
+
+      function countWordsAndSentences(text) {
+        const wordCount = text
+          .split(/\s+/)
+          .filter((word) => word.length > 0).length;
+        const sentenceCount = text
+          .split(/[.!?]/)
+          .filter((sentence) => sentence.trim().length > 0).length;
+        return { wordCount, sentenceCount };
+      }
+
+      // Function 3: Word Frequency
+      function wordFrequency(text) {
+        const words = text.toLowerCase().match(/\b\w+\b/g);
+        const frequency = {};
+        if (words) {
+          words.forEach((word) => {
+            frequency[word] = (frequency[word] || 0) + 1;
+          });
+        }
+        return frequency;
+      }
+
+      // Display results in HTML
+      function displayResults() {
+        const textInput = document.getElementById("text-input").value;
+        const maxLength = parseInt(document.getElementById("max-length").value);
+
+        // Shorten Text
+        const shortenedText = shortenText(textInput, maxLength);
+        document.getElementById("shortened-result").textContent =
+          "Shortened Text: " + shortenedText;
+
+        // Count Words and Sentences
+        const { wordCount, sentenceCount } = countWordsAndSentences(textInput);
+        document.getElementById("word-sentence-result").textContent =
+          "Word Count: " + wordCount + ", Sentence Count: " + sentenceCount;
+
+        // Word Frequency
+        const wordFreq = wordFrequency(textInput);
+        document.getElementById("frequency-result").textContent =
+          "Word Frequency: " + JSON.stringify(wordFreq);
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Text Processing Functions</h2>
+    <textarea
+      id="text-input"
+      rows="5"
+      cols="50"
+      placeholder="Enter your text here"
+    ></textarea>
+    <br /><br />
+    <label for="max-length">Max Length for Shorten Text:</label>
+    <input type="number" id="max-length" value="30" />
+    <br /><br />
+    <button onclick="displayResults()">Process Text</button>
+    <br /><br />
+    <p id="shortened-result"></p>
+    <p id="word-sentence-result"></p>
+    <p id="frequency-result"></p>
+  </body>
+</html>

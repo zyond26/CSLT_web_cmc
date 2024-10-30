@@ -1,0 +1,118 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table with colspan and rowspan</title>
+    <style>
+      table {
+        width: 50%;
+        border: 1px solid;
+        margin: 25px 0;
+        font-size: 18px;
+        text-align: left;
+      }
+      th {
+        background-color: white;
+        color: black;
+        padding: 12px;
+        border: 1px solid black;
+      }
+      td {
+        padding: 12px;
+        border: 1px solid black;
+      }
+      tr {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Create Tables in HTML</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Columu 1</th>
+          <th>Columu 2</th>
+          <th>Columu 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">Row 1 Cell 1</td>
+          <td>Row 1 Cell 2</td>
+          <td>Row 1 Cell 3</td>
+        </tr>
+        <tr>
+          <td>Row 2 Cell 2</td>
+          <td>Row 2 Cell 3</td>
+        </tr>
+        <tr>
+          <td colspan="3">Row 3 Cell 1</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>table</h2>
+    <table style="width: 60%">
+      <tr>
+        <th rowspan="3">Day</th>
+        <th colspan="3">Seminar</th>
+      </tr>
+      <tr>
+        <th colspan="2">Schedule</th>
+        <th rowspan="2">Topic</th>
+      </tr>
+      <tr>
+        <th>Start</th>
+        <th>Begin</th>
+      </tr>
+      <tr>
+        <td rowspan="2">Monday</td>
+        <td rowspan="2">8.00 am</td>
+        <td rowspan="2">5.00 am</td>
+        <td>Introduxe to XML</td>
+      </tr>
+      <tr>
+        <td>Validity : DTD and relax</td>
+      </tr>
+      <tr>
+        <td rowspan="4">Tuesday</td>
+        <td>8:00 am</td>
+        <td>5:00 pm</td>
+        <td rowspan="2" style="padding: 6px">Xpath</td>
+      </tr>
+      <tr>
+        <td rowspan="2">11:00 am</td>
+        <td rowspan="2">2:00 pm</td>
+      </tr>
+      <tr>
+        <td rowspan="2">XML Tranformations</td>
+      </tr>
+      <tr>
+        <td>2:00 pm</td>
+        <td>5:00 pm</td>
+      </tr>
+      <tr>
+        <td>Wednesday</td>
+        <td>8:00 am</td>
+        <td>12:00 pm</td>
+        <td>XSL formating objects</td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!-- Bài tập 2: Đếm số lần nhấp vào nút
+ Tạo 1 trang HTML ới 1 nút và 1 đoạn văn. Mỗi khi bạn nhấn vào nút
+ số lần nhấn sẽ được hiển thị trong đonạ văn -->
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Đếm số lần nhấp</title>
+    <script>
+      let count = 0;
+      function countClicks() {
+        count++;
+        document.getElementById("clickCount").innerHTML =
+          "Số lần nhấn nút : " + count;
+      }
+    </script>
+  </head>
+  <body>
+    <p id="clickCount">Số lần nhấn nút: 0</p>
+    <button onclick="countClicks()">Nhấn vào đây</button>
+  </body>
+</html>

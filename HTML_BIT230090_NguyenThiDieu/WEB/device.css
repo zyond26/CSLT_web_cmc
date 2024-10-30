@@ -1,0 +1,107 @@
+@media (max-width: 500px) {
+  header nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+header {
+  background-color: #adb96e;
+  padding: 15px 0;
+  text-align: center;
+}
+
+header nav ul {
+  list-style: none;
+}
+
+/* General styles for the menu */
+header nav ul li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+/* Hover effect */
+header nav ul li a:hover {
+  background-color: #4caf50; /* Change to a darker green on hover */
+  color: white;
+}
+
+/* Active effect */
+header nav ul li a.active {
+  background-color: #2e7d32; /* Change to an even darker green when active */
+  color: white;
+}
+
+header nav ul li i {
+  margin-right: 5px;
+}
+
+main {
+  margin-top: 20px;
+}
+
+.product-section {
+  margin-bottom: 30px;
+}
+
+.product-section h2 {
+  background-color: #8bc34a;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-content {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-content p {
+  width: 70%;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.product-content img {
+  width: 25%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+footer {
+  text-align: center;
+  padding: 15px 0;
+  background-color: #adb96e;
+  color: #fff;
+  font-size: 14px;
+}

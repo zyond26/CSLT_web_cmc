@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management</title>
+  </head>
+  <style>
+    body {
+      background-color: darkblue;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+    .main-area {
+      border: 5px double black;
+      width: 800px;
+      height: auto;
+      margin: 100px auto;
+      padding: 10px;
+      background-color: white;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    label {
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
+    }
+    .form-group {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th,
+    td {
+      border: 1px solid black;
+      padding: 6px;
+      text-align: left;
+    }
+    button {
+      background-color: rgb(243, 237, 237);
+      border: none;
+      padding: 8px 16px;
+      text-align: center;
+      font-size: 12px;
+      display: inline;
+    }
+    .delete {
+      color: blue;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="main-area">
+      <h2>Student Management</h2>
+      <form id="StudentForm">
+        <div class="form-group">
+          <label for="StudentName">Student Name:</label>
+          <input type="text" id="StudentName" name="StudentName" required />
+        </div>
+        <div class="form-group">
+          <label for="StudentDOB">Student DOB:</label>
+          <input type="date" id="StudentDOB" name="StudentDOB" required />
+        </div>
+        <div class="form-group">
+          <label>Student Gender:</label>
+          <input type="radio" id="male" name="gender" value="Male" required />
+          <label for="male">Male</label>
+          <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="Female"
+            required
+          />
+          <label for="female">Female</label>
+        </div>
+        <div class="form-group">
+          <label>Student Language:</label>
+          <input type="checkbox" id="english" name="language" value="English" />
+          <label for="english">English</label>
+          <input
+            type="checkbox"
+            id="vietnamese"
+            name="language"
+            value="Vietnamese"
+          />
+          <label for="vietnamese">Vietnamese</label>
+          <input
+            type="checkbox"
+            id="japanese"
+            name="language"
+            value="Japanese"
+          />
+          <label for="japanese">Japanese</label>
+          <input type="checkbox" id="chinese" name="language" value="Chinese" />
+          <label for="chinese">Chinese</label>
+          <input type="checkbox" id="french" name="language" value="French" />
+          <label for="french">French</label>
+        </div>
+        <div class="form-group">
+          <label for="class">Student Class:</label>
+          <select id="class" name="class">
+            <option value="C1608G">C1608G</option>
+            <option value="C1610L">C1610L</option>
+            <option value="C1708I">C1708I</option>
+          </select>
+          <a href="#" id="addClassLink" style="margin-left: 10px">Add Class</a>
+        </div>
+        <button type="submit"><strong>Add</strong></button>
+      </form>
+      <h3>Student List</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Language</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="studentTableBody">
+          <!-- Dynamic content will be added here -->
+        </tbody>
+      </table>
+      <p><strong id="totalCount">Total: 0 students</strong></p>
+    </div>
+    <script>
+      // Event listener for the "Add Class" link
+      document
+        .getElementById("addClassLink")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Prompt user to input a new class name
+          const newClassName = prompt("Input new class name:");
+
+          if (newClassName && newClassName.trim() !== "") {
+            const classSelect = document.getElementById("class");
+            const newOption = document.createElement("option");
+            newOption.value = newClassName.trim();
+            newOption.text = newClassName.trim();
+            classSelect.add(newOption);
+            alert("Class added successfully!");
+          } else {
+            alert("Please enter a valid class name.");
+          }
+        });
+    </script>
+    <script>
+      const studentForm = document.getElementById("StudentForm");
+      const studentTableBody = document.getElementById("studentTableBody");
+      const totalCount = document.getElementById("totalCount");
+      let studentCount = 0;
+
+      studentForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Get values from the form
+        const name = document.getElementById("StudentName").value;
+        const dob = document.getElementById("StudentDOB").value;
+        const gender = document.querySelector(
+          'input[name="gender"]:checked'
+        ).value;
+        const classValue = document.getElementById("class").value;
+        const languages = Array.from(
+          document.querySelectorAll('input[name="language"]:checked')
+        )
+          .map((language) => language.value)
+          .join(", ");
+
+        // Create a new row and cells
+        const row = document.createElement("tr");
+        row.innerHTML = `
+        <td>${name}</td>
+        <td>${classValue}</td>
+        <td>${new Date(dob).toLocaleDateString()}</td>
+        <td>${gender}</td>
+        <td>${languages}</td>
+        <td><span class="delete">Delete</span></td>
+      `;
+
+        // Append delete functionality to the delete button
+        row.querySelector(".delete").addEventListener("click", function () {
+          row.remove();
+          studentCount--;
+          updateTotalCount();
+          alert("Student deleted successfully!");
+        });
+
+        // Append the row to the table
+        studentTableBody.appendChild(row);
+
+        // Increment student count and update display
+        studentCount++;
+        updateTotalCount();
+
+        // Reset form and show success message
+        studentForm.reset();
+        alert("Student added successfully!");
+      });
+
+      function updateTotalCount() {
+        totalCount.innerHTML = `Total: ${studentCount} students`;
+      }
+    </script>
+  </body>
+</html>

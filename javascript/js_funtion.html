@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Tính diện tích tam giác 3 cạnh bất kì</h2>
+    <p id="area"></p>
+    <script>
+      function calculateArea(a, b, c) {
+        p = (a + b + c) / 2;
+        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
+      }
+      let result = calculateArea(3, 4, 5);
+      document.write("Diện tích của tam giác là: " + result);
+    </script>
+  </body>
+</html>
