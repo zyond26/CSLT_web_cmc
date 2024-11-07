@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh sách thông tin cá nhân</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .person-info {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 15px;
+        width: 300px;
+      }
+      .person-info h3 {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Danh sách thông tin cá nhân</h1>
+    <div id="personList"></div>
+
+    <script>
+      // Danh sách đối tượng JSON của nhiều người
+      const people = [
+        {
+          name: "Nguyen Van A",
+          age: 25,
+          address: {
+            street: "123 Duong ABC",
+            city: "Ho Chi Minh",
+            postalCode: "700000",
+            country: "Vietnam",
+          },
+        },
+        {
+          name: "Tran Thi B",
+          age: 30,
+          address: {
+            street: "456 Duong XYZ",
+            city: "Ha Noi",
+            postalCode: "100000",
+            country: "Vietnam",
+          },
+        },
+        {
+          name: "Le Van C",
+          age: 35,
+          address: {
+            street: "789 Duong KLM",
+            city: "Da Nang",
+            postalCode: "550000",
+            country: "Vietnam",
+          },
+        },
+      ];
+
+      // Hàm hiển thị danh sách thông tin
+      function displayPeople() {
+        const personList = document.getElementById("personList");
+        personList.innerHTML = ""; // Xóa nội dung cũ để cập nhật danh sách mới
+
+        people.forEach((person) => {
+          // Tạo phần tử div chứa thông tin mỗi người
+          const personDiv = document.createElement("div");
+          personDiv.className = "person-info";
+
+          personDiv.innerHTML = `
+                <h3>${person.name}</h3>
+                <p><strong>Tuổi:</strong> ${person.age}</p>
+                <p><strong>Địa chỉ:</strong><br>
+                    ${person.address.street}, ${person.address.city}, 
+                    ${person.address.postalCode}, ${person.address.country}</p>
+            `;
+
+          personList.appendChild(personDiv);
+        });
+      }
+
+      // Hàm thêm người mới vào danh sách
+      function addPerson(name, age, street, city, postalCode, country) {
+        people.push({
+          name: name,
+          age: age,
+          address: {
+            street: street,
+            city: city,
+            postalCode: postalCode,
+            country: country,
+          },
+        });
+        displayPeople(); // Cập nhật lại danh sách hiển thị
+      }
+
+      // Hiển thị danh sách ban đầu
+      displayPeople();
+
+      // Thêm người mới (ví dụ)
+      addPerson(
+        "Pham Thi D",
+        28,
+        "101 Duong UVW",
+        "Can Tho",
+        "900000",
+        "Vietnam"
+      );
+    </script>
+  </body>
+</html>

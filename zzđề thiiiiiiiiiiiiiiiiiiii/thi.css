@@ -1,0 +1,102 @@
+/* Reset mặc định */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Font và color */
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #004080;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  margin: auto;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo img {
+  height: 100px;
+  width: 100px;
+}
+
+.system-name h1 {
+  font-size: 24px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Menu với hiệu ứng hover */
+nav {
+  background-color: #0066cc;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #004080;
+}
+
+/* Main content */
+main {
+  padding: 20px;
+}
+
+.content h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+/* Responsive thiết bị di động */
+@media (max-width: 600px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+}
